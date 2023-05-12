@@ -6,6 +6,7 @@ Simple python program to track advertisemets from beacons.
 Initial scan determins the average advertisment interval and then tracks a specificed device to determine how long it was active for.  Developed to track the battery life of esp32 ble devices
 
 ## Global Variables
+The global variables should be adjusted to fit your scanning needs.
 
 ### TARGET_DEVICE_NAME 
 The scans will be filtered from the list of device names. No other device statistics will be tracked.
