@@ -19,9 +19,26 @@ cd beacon-tracker
 python -m venv .venv
 ```
 
+Activate the enviroment:
+
+Linux:
+```
+source .venv/bin/activate
+```
+
+Windows:
+```
+.venv/bin/activate
+```
+
 Install the requirements.
 ```
 pip install -r requirements
+```
+
+run the program:
+```
+python app.py
 ```
 
 ## Global Variables
