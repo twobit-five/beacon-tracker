@@ -57,7 +57,7 @@ async def log_filtered_bluetooth_broadcasts():
     print("Performing Initial scan to determine advertising interval...")
     await advertisment_scan()
     if len(device_info) == 0:
-        print("No devices found during initial scan!")
+        print("No devices found during initial scan, not able to calculate advertisement interval!!!")
 
     for addr, info in list(device_info.items()):
         print(f"Advertisng Report for {addr}:")
