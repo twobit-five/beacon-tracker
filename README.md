@@ -5,6 +5,25 @@ Simple python program to track advertisemets from BLE devices.
 
 Initial scan determins the average advertisment interval and then tracks a specificed device to determine how long it was active for.  Developed to track the battery life of esp32 ble devices
 
+## Installation
+
+Clone the repo:
+```
+git clone https://github.com/twobit-five/beacon-tracker.git
+
+```
+
+Create a virtual enviroment: (RECOMENDED):
+```
+cd beacon-tracker
+python -m venv .venv
+```
+
+Install the requirements.
+```
+pip install -r requirements
+```
+
 ## Global Variables
 The global variables should be adjusted to fit your scanning needs.
 
