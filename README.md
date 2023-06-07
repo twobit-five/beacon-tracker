@@ -33,7 +33,7 @@ Windows:
 
 Install the requirements.
 ```
-pip install -r requirements
+pip install -r requirements.txt
 ```
 
 run the program:
