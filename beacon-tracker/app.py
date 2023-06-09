@@ -146,4 +146,4 @@ if __name__ == "__main__":
     program_timeout_period = int(args['program_timeout_period'])
 
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(log_filtered_bluetooth_broadcasts())
+    loop.run_until_complete(log_bluetooth_broadcasts())
