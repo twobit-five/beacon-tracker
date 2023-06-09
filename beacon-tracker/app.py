@@ -1,4 +1,6 @@
 import asyncio
+import argparse
+import sys
 from bleak import BleakScanner
 from datetime import datetime, timedelta
 
@@ -8,9 +10,9 @@ TARGET_SERVICE_UUID = "6362b48b-130c-4e9e-9e48-c068f959084b"
 
 device_info = {}
 scan_delay = 30
-device_timeout_period = 1
+device_timeout_period = 3
 program_timeout_period = 1 #TODO implement
-scan_duration = 30
+scan_duration = 10
 advertisement_scan_duration = 30
 
 def detection_callback(device, advertisement_data):
@@ -38,7 +40,7 @@ async def advertisment_scan():
     await asyncio.sleep(advertisement_scan_duration)
     await scanner.stop()
 
-async def log_filtered_bluetooth_broadcasts():
+async def log_bluetooth_broadcasts():
     device_has_been_seen = False
     device_registered = False
 
@@ -116,7 +118,32 @@ async def log_filtered_bluetooth_broadcasts():
         # Wait for a while before scanning again
         await asyncio.sleep(scan_delay)
 
-
 if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser(description='Description of your program')
+    
+    parser.add_argument('-s','--scan_duration', help='Scan duration in seconds', required=False, default=10)
+    parser.add_argument('-d','--scan_delay', help='Scan delay in seconds', required=False, default=30)
+    parser.add_argument('-t','--device_timeout_period', help='Device timeout period in minutes', required=False, default=3)
+    parser.add_argument('-a','--advertisement_scan_duration', help='Advertisement scan duration in seconds', required=False, default=30)
+    parser.add_argument('-n','--target_device_name', help='Target device name', type=str, required=False, default='Dangerous-Vehicle')
+    parser.add_argument('-u','--target_service_uuid', help='Target service UUID', type=str, required=False, default='6362b48b-130c-4e9e-9e48-c068f959084b')
+    parser.add_argument('-p','--program_timeout_period', help='Program timeout period in minutes (Not Currenlty Implemented!!!)', required=False, default=1)
+
+    args = vars(parser.parse_args())
+
+    print("******************************************************************") 
+    print("Starting program...")
+    print("Press Ctrl+C to exit\n")
+    print("******************************************************************")
+
+    scan_duration = int(args['scan_duration'])
+    scan_delay = int(args['scan_delay'])
+    device_timeout_period = int(args['device_timeout_period'])
+    advertisement_scan_duration = int(args['advertisement_scan_duration'])
+    TARGET_DEVICE_NAME = str(args['target_device_name'])
+    TARGET_SERVICE_UUID = str(args['target_service_uuid'])
+    program_timeout_period = int(args['program_timeout_period'])
+
     loop = asyncio.get_event_loop()
     loop.run_until_complete(log_filtered_bluetooth_broadcasts())
