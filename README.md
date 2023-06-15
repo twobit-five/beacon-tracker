@@ -147,3 +147,4 @@ Device 34:85:18:07:0A:D2 report:
 - [X] Add command line options
 - [ ] Update Deprecated detection_callback method to register callback (Use constructor instead)
 - [ ] Improve documentation
+- [ ] Add verbose flag which prints each received beacon.
